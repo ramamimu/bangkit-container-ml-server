@@ -1,0 +1,6 @@
+[submodule "bangkit-server-ml"]
+	path = bangkit-server-ml
+	url = https://github.com/ramamimu/bangkit-server-ml.git
+[submodule "ML-Bangkit-Capstone-Project"]
+	path = ML-Bangkit-Capstone-Project
+	url = https://github.com/argadewanata/ML-Bangkit-Capstone-Project.git
