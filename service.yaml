@@ -1,0 +1,27 @@
+# service load balancer configuration
+apiVersion: v1
+kind: Service
+metadata:
+  name: lb-service
+spec:
+  type: LoadBalancer
+  loadBalancerIP: 35.219.27.99
+  selector:
+    app: ml-pod-k8s
+  ports:
+    - port: 6379
+      targetPort: 6379
+      protocol: TCP
+      name: redis-server
+    - port: 8000
+      targetPort: 8000
+      protocol: TCP
+      name: ml-front-server
+    - port: 9898
+      targetPort: 9898
+      protocol: TCP
+      name: ml-config-env
+    - port: 80
+      targetPort: 80
+      protocol: TCP
+      name: nginx-server

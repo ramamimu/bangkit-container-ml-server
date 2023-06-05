@@ -5,16 +5,16 @@ steps:
 
   # build redis
   - name: "gcr.io/cloud-builders/docker"
-    args: ["build", "-t", "gcr.io/$PROJECT_ID/redis-server:v0.1", "."]
+    args: ["build", "-t", "gcr.io/$PROJECT_ID/redis-server:v0.2", "."]
   # build ml server
   - name: "gcr.io/cloud-builders/docker"
-    args: ["build", "-t", "gcr.io/$PROJECT_ID/ml-server:v0.1", "./bangkit-server-ml/."]
+    args: ["build", "-t", "gcr.io/$PROJECT_ID/ml-server:v0.2", "./bangkit-server-ml/."]
 
   # push images to container registry
   - name: "gcr.io/cloud-builders/docker"
-    args: ["push", "gcr.io/$PROJECT_ID/redis-server:v0.1"]
+    args: ["push", "gcr.io/$PROJECT_ID/redis-server:v0.2"]
   - name: "gcr.io/cloud-builders/docker"
-    args: ["push", "gcr.io/$PROJECT_ID/ml-server:v0.1"]
+    args: ["push", "gcr.io/$PROJECT_ID/ml-server:v0.2"]
 
   # apply cluster configuration
   - name: "gcr.io/cloud-builders/kubectl"

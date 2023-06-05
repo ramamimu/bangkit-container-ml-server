@@ -14,14 +14,14 @@ spec:
     spec:
       containers:
         - name: redis-container
-          image: gcr.io/c23-pr513-capstone/redis-server:v0.1
+          image: gcr.io/c23-pr513-capstone/redis-server:v0.2
           ports:
             - containerPort: 6379
               name: redis-server
             - containerPort: 8001
               name: redis-client
         - name: front-server-container
-          image: gcr.io/c23-pr513-capstone/ml-server:v0.1
+          image: gcr.io/c23-pr513-capstone/ml-server:v0.2
           ports:
             - containerPort: 8000
               name: ml-front-server
@@ -34,3 +34,8 @@ spec:
               value: "redis-container"
             - name: REDIS_PORT
               value: "6379"
+        - name: nginx-container
+          image: nginx:1.19.6
+          ports:
+            - containerPort: 80
+              name: nginx
