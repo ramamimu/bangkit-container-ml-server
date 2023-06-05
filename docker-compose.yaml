@@ -1,0 +1,32 @@
+version: "1.0"
+services:
+  redis:
+    build: .
+    container_name: redis
+    ports:
+      - "6379:6379"
+      - "8001:8001"
+    networks:
+      - redis-network
+    volumes:
+      - redis-volume:/data
+  front-server:
+    depends_on:
+      - redis
+    build: ./bangkit-server-ml/.
+    container_name: front-server
+    ports:
+      - "8000:8000"
+      - "9898:9898"
+    networks:
+      - redis-network
+    environment:
+      - PORT=9898
+
+volumes:
+  redis-volume:
+
+networks:
+  redis-network:
+    name: redis-network
+    driver: bridge
