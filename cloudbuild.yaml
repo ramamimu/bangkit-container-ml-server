@@ -15,3 +15,13 @@ steps:
     args: ["push", "gcr.io/$PROJECT_ID/redis-server:v0.1"]
   - name: "gcr.io/cloud-builders/docker"
     args: ["push", "gcr.io/$PROJECT_ID/ml-server:v0.1"]
+
+  # apply cluster configuration
+  - name: "gcr.io/cloud-builders/kubectl"
+    args:
+      - "apply"
+      - "-f"
+      - "deployment.yaml"
+    env:
+      - "CLOUDSDK_COMPUTE_ZONE=asia-southeast2-a"
+      - "CLOUDSDK_CONTAINER_CLUSTER=ml-server-k8s"
